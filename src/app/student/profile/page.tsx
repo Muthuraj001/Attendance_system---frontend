@@ -18,7 +18,7 @@ export default function StudentProfile() {
               </p>
 
               <h2 className="text-2xl font-bold">
-                Thula
+                Thulasi
               </h2>
             </div>
 

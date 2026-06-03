@@ -11,21 +11,43 @@ export default function StudentLoginPage() {
   const [password, setPassword] =
     useState("");
 
-  const handleLogin = async (
-    e: React.FormEvent
-  ) => {
-    e.preventDefault();
+  const [loading, setLoading] =
+  useState(false);
 
-    console.log({
-      email,
-      password,
-    });
+const handleLogin = async (
+  e: React.FormEvent
+) => {
+  e.preventDefault();
 
-    alert("Student Login Success");
+  setLoading(true);
 
-    router.push("/student/dashboard");
-  };
+  try {
+    const validEmail =
+      "student@gmail.com";
 
+    const validPassword =
+      "student123";
+
+    if (
+      email === validEmail &&
+      password === validPassword
+    ) {
+      alert(
+        `Welcome ${email}\nLogin Successful`
+      );
+
+      router.push(
+        "/student/dashboard"
+      );
+    } else {
+      alert(
+        "Invalid Email or Password"
+      );
+    }
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-xl p-8 w-[400px]">
@@ -74,10 +96,11 @@ export default function StudentLoginPage() {
           </div>
 
           <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition"
+             type="submit"disabled={loading}
+  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semiboldtransition"
           >
             Login
+            {loading? "Logging in..." : "Login"}
           </button>
         </form>
 

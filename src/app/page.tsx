@@ -242,7 +242,7 @@ export default function HomePage() {
                         variant="outline"
                         className="mt-3 rounded-xl"
                       >
-                        Create Account
+                        New Resister
                       </Button>
                     </Link>
                   </div>
